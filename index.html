@@ -111,10 +111,10 @@ body::before{
 .micro .rtag{color:var(--green);}
 .full  .rtag{color:var(--blue);}
 .rper{font-size:10px;color:var(--t2);margin-bottom:4px;}
-.rnum{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:-1px;line-height:1;width:80px;text-align:right;display:block;}
+.rnum{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:-1px;line-height:1;width:80px;min-width:80px;text-align:right;display:block;}
 .micro .rnum{color:var(--green);text-shadow:0 0 30px rgba(16,232,160,.5);}
 .full  .rnum{color:var(--blue); text-shadow:0 0 30px rgba(155,93,229,.5);}
-.rnum.zero{color:var(--t3);text-shadow:none;}
+.rnum.zero{color:var(--t3);text-shadow:none;font-size:56px;}
 .rctrl{font-size:10px;color:var(--t3);font-weight:500;}
 .gbar{height:2px;background:var(--c2);border-radius:2px;margin-top:8px;}
 .gbar-fill{height:100%;border-radius:2px;width:0%;transition:width .3s cubic-bezier(.4,0,.2,1);}
@@ -321,7 +321,10 @@ function calc(){
   document.getElementById('sPt').textContent='$'+a.mPt+'/$'+a.fPt;
   if(!risk||!sl||sl<=0||risk<=0){
     rc.classList.add('empty');
-    ['mVal','fVal'].forEach(id=>document.getElementById(id).textContent='—');
+    document.getElementById('mVal').textContent='0';
+    document.getElementById('fVal').textContent='0';
+    document.getElementById('mVal').className='rnum zero';
+    document.getElementById('fVal').className='rnum zero';
     document.getElementById('mPer').textContent='—/contract';
     document.getElementById('fPer').textContent='—/contract';
     document.getElementById('sRiskMicro').textContent='$—';
@@ -337,7 +340,7 @@ function calc(){
   rc.classList.remove('empty');
   const mEl=document.getElementById('mVal'),fEl=document.getElementById('fVal');
   mEl.textContent=mC; mEl.className='rnum'+(mC===0?' zero':'');
-  fEl.textContent=fC; fEl.className='rnum'+(fC===0?' zero':'');
+  fEl.textContent=fC; fEl.className='rnum'+(fC===0?' zero':'')
   document.getElementById('mPer').textContent=mC>0?fmt(mR)+'/ct':'too small';
   document.getElementById('fPer').textContent=fC>0?fmt(fR)+'/ct':'too small';
   document.getElementById('sRiskMicro').textContent=mC>0?fmt(mA):'$0';
