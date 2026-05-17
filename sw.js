@@ -1,5 +1,11 @@
-const CACHE = 'possize-v1';
-const ASSETS = ['/', '/index.html', '/manifest.json', '/icon-192.png', '/icon-512.png'];
+const CACHE = 'possize-v2';
+const ASSETS = [
+  '/PosSize/',
+  '/PosSize/index.html',
+  '/PosSize/manifest.json',
+  '/PosSize/icon-192.png',
+  '/PosSize/icon-512.png'
+];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
