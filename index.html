@@ -134,13 +134,13 @@ body::before{
 
 /* NUMPAD */
 .numpad{
-  flex:1;
+  flex-shrink:0;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   grid-template-rows:repeat(4,1fr);
   gap:5px;
   padding-bottom:env(safe-area-inset-bottom,16px);
-  min-height:0;
+  height:220px;
 }
 .nk{
   background:var(--c1);
@@ -276,7 +276,7 @@ function render(){
   const cur_c=af==='risk'?'<span class="cursor blue"></span>':'';
   const sl_c=af==='sl'?'<span class="cursor amber" style="background:var(--red)"></span>':'';
   rd.className='ivalue'+(rv===''?' empty':'');
-  rd.style.color=rv===''?'':'var(--blue)';
+  rd.style.color=rv===''?'':'var(--text)';
   rd.innerHTML=(rv===''?'200':rv)+cur_c;
   sd.className='ivalue'+(sv===''?' empty':'');
   sd.style.color=sv===''?'':'var(--red)';
